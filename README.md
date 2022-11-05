@@ -34,8 +34,8 @@ bash run.sh   // linux
 
 ## Hosted 
 
-http://kaze.live/rest-api
+https://wx2p2uqbwg.us-east-1.awsapprunner.com
 
 ## Swagger
 
-https://app.swaggerhub.com/apis-docs/Junkiez/RestAPI/0.0.2
+https://app.swaggerhub.com/apis-docs/Junkiez/RestAPI/0.0.4
