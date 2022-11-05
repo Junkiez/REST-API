@@ -1,0 +1,145 @@
+openapi: 3.0.3
+info:
+  title: RestAPI
+  version: 0.0.1
+servers:
+  - url: https://kaze.live/rest-api
+paths:
+  /product:
+    post:
+      tags:
+        - product
+      summary: Create product
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+      responses:
+        default:
+          description: successful
+    get:
+      tags:
+        - product
+      summary: Get products, by pages, count, sort
+      parameters:
+        - in: query
+          name: pageIndex
+          schema:
+            type: integer
+          description: The number of page with data to return
+        - in: query
+          name: pageSize
+          schema:
+            type: integer
+          description: The numbers of items to return
+        - in: query
+          name: sortField
+          schema:
+            type: string
+          description: Field name to sort by
+        - in: query
+          name: sort
+          schema:
+            type: string
+          description: Sort ascending or descending
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  allOf:
+                    - $ref: '#/components/schemas/Product'
+        '400':
+          description: Bad request 
+    delete:
+      tags:
+        - product
+      summary: Delete all products
+      responses:
+        '200':
+          description: Successful
+  /product/{id}:
+    get:
+      tags:
+        - product
+      summary: Get user by user name
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '400':
+          description: Bad request
+    delete:
+      tags:
+        - product
+      summary: Delete product by id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Complete
+  /product/count:
+    get:
+      tags:
+        - product
+      summary: Return product count
+      responses:
+        default:
+          description: successful 
+  /product/expensivest:
+    get:
+      tags:
+        - product
+      summary: Return expensivest product
+      responses:
+        default:
+          description: successful 
+  /product/cheapest:
+    get:
+      tags:
+        - product
+      summary: Return cheapest product
+      responses:
+        default:
+          description: successful
+  /product/median:
+    get:
+      tags:
+        - product
+      summary: Return median product
+      responses:
+        default:
+          description: successful
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 3
+        name:
+          type: string
+          example: "something"
+        price:
+          type: integer
+          format: int32
+          example: 500
