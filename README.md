@@ -8,6 +8,8 @@
 
 + client in vuejs and vite
 
++ cors
+
 + deployed on aws app run platform.
 
 + includes swagger docs
