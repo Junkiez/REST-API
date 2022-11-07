@@ -22,7 +22,7 @@ To run app:
 
 require ^node16
 
-make .env file in backend directory with
+make .env file in directory with
 
 DB_URL=postgres://user:pass@host:port/database_name
 
